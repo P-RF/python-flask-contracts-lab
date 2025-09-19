@@ -12,13 +12,13 @@ app = Flask(__name__)
 def contract(id):
     for contract in contracts:
         if contract['id'] == id:
-            return '200: Contract found — return information', 200
+            return contract["contract_information"], 200
     return '404: Contract not found', 404
 
 @app.route('/customer/<customer_name>')
 def customer(customer_name):
     if customer_name.lower() in [customer.lower() for customer in customers]:
-        return '204: Customer found — return no information', 204
+        return '', 204
     else:
         return '404: Customer not found', 404
 
